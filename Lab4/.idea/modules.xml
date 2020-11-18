@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Lab4.iml" filepath="$PROJECT_DIR$/.idea/modules/Lab4.iml" group="Lab4" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sandwich_Club.iml" filepath="$PROJECT_DIR$/.idea/modules/Sandwich_Club.iml" group="Sandwich_Club" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Sandwich Club/app" />
     </modules>
   </component>
 </project>
