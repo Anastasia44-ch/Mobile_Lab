@@ -1,4 +1,4 @@
-package com.example.photogallery;
+package com.example.photogallery.model;
 
 public class Example {
     private Photos photos;
