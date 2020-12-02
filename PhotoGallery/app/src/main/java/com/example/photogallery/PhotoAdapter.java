@@ -16,20 +16,21 @@ import java.util.List;
 
 import retrofit2.Callback;
 
-public class PhotoAdapter  extends RecyclerView.Adapter <PhotoAdapter.ViewHolder>{
-
+public class PhotoAdapter extends RecyclerView.Adapter <PhotoAdapter.ViewHolder> {
     private final Callback<Example> photoGallery;
     private final List<Photo> values;
     private OnInsertListener onInsertListener;
 
-    public PhotoAdapter(Callback<Example> parent, List<Photo> items) {
+    public
+    PhotoAdapter(Callback<Example> parent, List<Photo> items) {
         photoGallery = parent;
         values = items;
 
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public
+    ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item, parent, false);
 
@@ -37,7 +38,8 @@ public class PhotoAdapter  extends RecyclerView.Adapter <PhotoAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public
+    void onBindViewHolder(final ViewHolder holder, int position) {
         String s;
         s = "https://farm" + Integer.toString(values.get(position).getFarm()) + ".staticflickr.com/" +
                 values.get(position).getServer() + "/" + values.get(position).getId() +
@@ -47,19 +49,23 @@ public class PhotoAdapter  extends RecyclerView.Adapter <PhotoAdapter.ViewHolder
     }
 
     @Override
-    public int getItemCount() {
+    public
+    int getItemCount() {
         return values.size();
     }
 
-    public interface OnInsertListener {
+    public
+    interface OnInsertListener {
         void onInsert(Photo photo);
     }
 
-    public void setOnInsertListener(OnInsertListener onInsertListener) {
+    public
+    void setOnInsertListener(OnInsertListener onInsertListener) {
         this.onInsertListener = onInsertListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public
+    class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView image;
 
         ViewHolder(View view) {
@@ -67,11 +73,12 @@ public class PhotoAdapter  extends RecyclerView.Adapter <PhotoAdapter.ViewHolder
             image = view.findViewById(R.id.iv);
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public
+                void onClick(View view) {
                     onInsertListener.onInsert(values.get(ViewHolder.this.getAdapterPosition()));
                 }
             });
         }
     }
-
 }
+

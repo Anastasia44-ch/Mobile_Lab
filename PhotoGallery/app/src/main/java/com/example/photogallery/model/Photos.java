@@ -1,7 +1,5 @@
 package com.example.photogallery.model;
 
-import com.example.photogallery.model.Photo;
-
 import java.util.List;
 
 public class Photos {

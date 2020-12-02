@@ -1,6 +1,7 @@
 package com.example.photogallery.api;
 
 import com.example.photogallery.model.Example;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
