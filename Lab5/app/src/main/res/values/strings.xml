@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Event Handling</string>
+    <string name="cg_textview">a placeholder</string>
+    <string name="cg">cg</string>
+    <string name="BC">Button Click</string>
+    <string name="me_textview1">MotionEvent_tb1</string>
+    <string name="me_textview2">MotionEvent_tb2</string>
+
+    <string name="ME">Mouse Event</string>
+    <string name="CG">Common Gestures</string>
+    <string name="button">Press me</string>
+    <string name="bc_textview">a placeholder</string>
 </resources>
