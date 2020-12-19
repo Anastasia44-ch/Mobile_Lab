@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:layout_width="match_parent">
+    <item
+        android:id="@+id/menuitem_bc"
+        android:title="@string/BC"
+        android:onClick="menu_activity"/>
+
+    <item
+        android:id="@+id/menuitem_cg"
+        android:title="@string/CG"
+        android:onClick="menu_activity"/>
+
+    <item
+        android:id="@+id/menuitem_me"
+        android:title="@string/ME"
+        android:onClick="menu_activity"/>
+</menu>
