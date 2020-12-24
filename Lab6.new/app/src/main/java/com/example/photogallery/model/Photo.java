@@ -30,11 +30,11 @@ import java.util.Map;
         "height_s",
         "width_s"
 })
-//
+@Entity
 public class Photo {
 
     @JsonProperty("id")
-    //
+    @PrimaryKey
     @NonNull
     private String id;
     @JsonProperty("owner")
