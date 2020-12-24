@@ -1,5 +1,6 @@
 package com.example.photogallery;
 
+
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -13,8 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.photogallery.model.*;
+import com.example.photogallery.api.*;
+import com.example.photogallery.db.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PhotoGallery extends AppCompatActivity {
     private final List<Photo> photos = new ArrayList<>();
@@ -94,5 +103,28 @@ public class PhotoGallery extends AppCompatActivity {
         return true;
     }
 
+    public void onLoadGalleryClick(MenuItem item) {
+        photos.clear();
+        photos.addAll(dao.loadAll());
+        adapter.notifyDataSetChanged();
+    }
 
+    public void onLoadRecentClick(MenuItem item) {
+        flickrAPI.getRecent().enqueue(new Callback<Example>() {
+            @Override
+            public void onResponse(Call<Example> call, Response<Example> response) {
+                photos.clear();
+                photos.addAll(response.body().getPhotos().getPhoto());
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<Example> call, Throwable t) {
+                AlertDialog alertDialog = new AlertDialog.Builder(PhotoGallery.this).create(); //Read Update
+                alertDialog.setTitle("Info");
+                alertDialog.setMessage("Something went wrong...");
+                alertDialog.show();
+            }
+        });
+    }
 }

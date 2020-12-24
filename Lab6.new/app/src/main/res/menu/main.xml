@@ -6,4 +6,10 @@
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.widget.SearchView"/>
+
+    <item android:title="@string/load_recent"
+        android:onClick="onLoadRecentClick"/>
+
+    <item android:title="@string/load_gallery"
+        android:onClick="onLoadGalleryClick"/>
 </menu>
