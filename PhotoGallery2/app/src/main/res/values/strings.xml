@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Photo Gallery</string>
+    <string name="app_name">Lab 6</string>
+    <string name="LoadLocalDB">Загрузить локальную базу данных</string>
     <string name="todo">TODO</string>
     <string name="search">Search</string>
+    <string name="load_recent">Load Recent</string>
+    <string name="load_gallery">Load Saved</string>
     <string name="app_label">PhotoGallery</string>
     <string name="search_hint">Search</string>
 </resources>
