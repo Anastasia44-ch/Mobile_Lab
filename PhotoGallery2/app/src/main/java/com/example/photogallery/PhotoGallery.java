@@ -1,9 +1,5 @@
 package com.example.photogallery;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.SearchManager;
@@ -14,8 +10,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.photogallery.model.*;
+import com.example.photogallery.api.*;
+import com.example.photogallery.db.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PhotoGallery extends AppCompatActivity {
     private final List<Photo> photos = new ArrayList<>();
@@ -119,3 +127,4 @@ public class PhotoGallery extends AppCompatActivity {
             }
         });
     }
+}

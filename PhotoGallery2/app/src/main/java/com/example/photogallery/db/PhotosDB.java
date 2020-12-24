@@ -2,6 +2,12 @@ package com.example.photogallery.db;
 
 import android.content.Context;
 
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+import com.example.photogallery.model.Photo;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
