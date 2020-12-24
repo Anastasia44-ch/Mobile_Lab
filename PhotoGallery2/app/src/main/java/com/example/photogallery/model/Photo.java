@@ -1,6 +1,7 @@
 package com.example.photogallery.model;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -27,10 +28,11 @@ import java.util.Map;
         "width_s"
 })
 
+@Entity
 public class Photo {
 
     @JsonProperty("id")
-
+    @PrimaryKey
     @NonNull
     private String id;
     @JsonProperty("owner")
