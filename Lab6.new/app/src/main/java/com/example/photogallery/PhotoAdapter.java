@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> {
     private final List<Photo> values;
-
+    private Listener onListener;
 
     public PhotoAdapter(List<Photo> items) {
         values = items;
@@ -43,11 +43,21 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         return values.size();
     }
 
+    public void setListener(Listener listener) {
+        this.onListener = listener;
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView image;
 
-
+        ViewHolder(View view) {
+            super(view);
+            image = view.findViewById(R.id.image);
+            image.setOnLongClickListener(v -> {
+                onListener.onLongClick(values.get(this.getAdapterPosition()));
+                return true;
+            });
+        }
     }
 
 }

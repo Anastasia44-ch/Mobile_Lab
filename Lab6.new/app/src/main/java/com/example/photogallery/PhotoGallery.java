@@ -22,7 +22,6 @@ public class PhotoGallery extends AppCompatActivity {
     private PhotosDAO dao;
     private final FlickrAPI flickrAPI = ServiceAPI.getRetrofit().create(FlickrAPI.class);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +29,7 @@ public class PhotoGallery extends AppCompatActivity {
         dao = PhotosDB.getDatabase(getApplicationContext()).getPhotosDao();
 
         final RecyclerView recycler = findViewById(R.id.rView);
-        recycler.setLayoutManager(new GridLayoutManager(this, 3));
+        recycler.setLayoutManager(new GridLayoutManager(this, 5));
 
         flickrAPI.getRecent().enqueue(new Callback<Example>() {
             @Override
@@ -46,6 +45,16 @@ public class PhotoGallery extends AppCompatActivity {
                 alertDialog.setMessage("Something went wrong...");
                 alertDialog.show();
             }
+        });
+
+
+        adapter.setListener(photo -> {
+            dao.insertPhoto(photo);
+
+            AlertDialog alertDialog = new AlertDialog.Builder(PhotoGallery.this).create(); //Read Update
+            alertDialog.setTitle("Info");
+            alertDialog.setMessage("Pictures saved!");
+            alertDialog.show();
         });
         recycler.setAdapter(adapter);
 
@@ -68,8 +77,8 @@ public class PhotoGallery extends AppCompatActivity {
                 }
             });
         }
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -85,29 +94,5 @@ public class PhotoGallery extends AppCompatActivity {
         return true;
     }
 
-    public void onLoadGalleryClick(MenuItem item) {
-        photos.clear();
-        photos.addAll(dao.loadAll());
-        adapter.notifyDataSetChanged();
-    }
-
-    public void onLoadRecentClick(MenuItem item) {
-        flickrAPI.getRecent().enqueue(new Callback<Example>() {
-            @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
-                photos.clear();
-                photos.addAll(response.body().getPhotos().getPhoto());
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<Example> call, Throwable t) {
-                AlertDialog alertDialog = new AlertDialog.Builder(PhotoGallery.this).create(); //Read Update
-                alertDialog.setTitle("Info");
-                alertDialog.setMessage("Something went wrong...");
-                alertDialog.show();
-            }
-        });
-    }
 
 }
