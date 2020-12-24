@@ -24,7 +24,8 @@ public class PhotoGallery extends AppCompatActivity {
     private final FlickrAPI flickrAPI = ServiceAPI.getRetrofit().create(FlickrAPI.class);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected
+    void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery_activity);
         dao = PhotosDB.getDatabase(getApplicationContext()).getPhotosDao();
@@ -34,13 +35,15 @@ public class PhotoGallery extends AppCompatActivity {
 
         flickrAPI.getRecent().enqueue(new Callback<Example>() {
             @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
+            public
+            void onResponse(Call<Example> call, Response<Example> response) {
                 photos.addAll(response.body().getPhotos().getPhoto());
                 adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<Example> call, Throwable t) {
+            public
+            void onFailure(Call<Example> call, Throwable t) {
                 AlertDialog alertDialog = new AlertDialog.Builder(PhotoGallery.this).create(); //Read Update
                 alertDialog.setTitle("Info");
                 alertDialog.setMessage("Something went wrong...");
@@ -48,18 +51,31 @@ public class PhotoGallery extends AppCompatActivity {
             }
         });
 
+
+        adapter.setListener(photo -> {
+            dao.insertPhoto(photo);
+
+            AlertDialog alertDialog = new AlertDialog.Builder(PhotoGallery.this).create(); //Read Update
+            alertDialog.setTitle("Info");
+            alertDialog.setMessage("Pictures saved!");
+            alertDialog.show();
+        });
+        recycler.setAdapter(adapter);
+
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             flickrAPI.searchPhotos(query).enqueue(new Callback<Example>() {
                 @Override
-                public void onResponse(Call<Example> call, Response<Example> response) {
+                public
+                void onResponse(Call<Example> call, Response<Example> response) {
                     photos.addAll(response.body().getPhotos().getPhoto());
                     adapter.notifyDataSetChanged();
                 }
 
                 @Override
-                public void onFailure(Call<Example> call, Throwable t) {
+                public
+                void onFailure(Call<Example> call, Throwable t) {
                     AlertDialog alertDialog = new AlertDialog.Builder(PhotoGallery.this).create(); //Read Update
                     alertDialog.setTitle("Info");
                     alertDialog.setMessage("Something went wrong...");
@@ -68,8 +84,10 @@ public class PhotoGallery extends AppCompatActivity {
             });
         }
     }
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public
+    boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
@@ -82,5 +100,4 @@ public class PhotoGallery extends AppCompatActivity {
 
         return true;
     }
-
 }
