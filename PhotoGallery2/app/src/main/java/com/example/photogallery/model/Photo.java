@@ -1,6 +1,5 @@
 package com.example.photogallery.model;
 
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -31,7 +30,6 @@ import java.util.Map;
         "height_s",
         "width_s"
 })
-
 @Entity
 public class Photo {
 
@@ -213,6 +211,5 @@ public class Photo {
     public String toString() {
         return new ToStringBuilder(this).append("id", id).append("owner", owner).append("secret", secret).append("server", server).append("farm", farm).append("title", title).append("ispublic", ispublic).append("isfriend", isfriend).append("isfamily", isfamily).append("urlS", urlS).append("heightS", heightS).append("widthS", widthS).append("additionalProperties", additionalProperties).toString();
     }
-
 
 }

@@ -38,7 +38,7 @@ public class PhotoGallery extends AppCompatActivity {
         dao = PhotosDB.getDatabase(getApplicationContext()).getPhotosDao();
 
         final RecyclerView recycler = findViewById(R.id.rView);
-        recycler.setLayoutManager(new GridLayoutManager(this, 5));
+        recycler.setLayoutManager(new GridLayoutManager(this, 3));
 
         flickrAPI.getRecent().enqueue(new Callback<Example>() {
             @Override
