@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
     <menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
         <item
             android:id="@+id/menuitem_bc"
@@ -11,6 +10,6 @@
             android:onClick="menu_activity"/>
         <item
             android:id="@+id/menuitem_me"
-            android:title="@string/ME"
+            android:title="Motion Event"
             android:onClick="menu_activity"/>
     </menu>

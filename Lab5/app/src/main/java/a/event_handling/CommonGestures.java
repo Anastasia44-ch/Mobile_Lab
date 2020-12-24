@@ -14,7 +14,7 @@ public class CommonGestures extends Fragment implements GestureDetector.OnGestur
     private GestureDetectorCompat gestureDetectorCompat;
 
     public CommonGestures() {
-        super(R.layout.commongestures;
+        super(R.layout.commongestures);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
